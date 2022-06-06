@@ -90,6 +90,13 @@ spec:
                   number: {{ .Values.ws.port }}
             path: /ws/?(.*)
             pathType: Prefix
+          - backend:
+              service:
+                name: {{ .Values.ws.name }}
+                port:
+                  number: {{ .Values.ws.port }}
+            path: /designs/(?.*)
+            pathType: Prefix            
   {{- if .Values.ingress.tls.enabled }}
   tls:
   - hosts:
